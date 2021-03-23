@@ -1,0 +1,27 @@
+<div class="card text-center">
+    <div class="card-header">Tüm Müşteriler</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Araba</th>
+                    <th>Şirket Adı</th>
+                    <th>Müşteri Adı</th>
+                    <th>Müşteri Soyadı</th>
+                    <th>Kiralama Tarihi</th>
+                    <th>Kiradan Dönüş Tarihi</th>s
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rental of rentals">
+                    <td>{{rental.carName}}</td>
+                    <td>{{rental.customerName}}</td>
+                    <td>{{rental.userFirstName}}</td>
+                    <td>{{rental.userLastName}}</td>
+                    <td>{{rental.rentDate}}</td>
+                    <td>{{rental.returnDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

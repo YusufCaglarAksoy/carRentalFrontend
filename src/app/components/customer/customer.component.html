@@ -1,0 +1,19 @@
+<div class="card text-center">
+    <div class="card-header">Tüm Müşteriler</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Şirket</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+              <td>{{ customer.customerId}}</td>
+              <td>{{ customer.companyName}}</td>
+          </tr>
+        </tbody> 
+      </table>
+    </div>
+  </div>
