@@ -28,14 +28,14 @@ export class BrandComponent implements OnInit {
 
   getCurrentBrandClass(brand: Brand) {
     if (brand == this.currentBrand) {
-      return 'list-group-item active';
+      return "list-group-item list-group-item-action list-group-item-dark";
     } else {
       return 'list-group-item';
     }
   }
   getAllBrandClass() {
     if (!this.currentBrand) {
-      return 'list-group-item list-group-item-info';
+      return "list-group-item list-group-item-action list-group-item-dark";
     } else {
       return 'list-group-item';
     }

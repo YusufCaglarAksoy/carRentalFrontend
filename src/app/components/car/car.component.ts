@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
-import { CarImageService } from 'src/app/services/carImage.service';
 
 @Component({
   selector: 'app-car',
@@ -12,6 +10,7 @@ import { CarImageService } from 'src/app/services/carImage.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  currentCar:Car;
 
   carImageBasePath = 'https://localhost:44315/Images/'
   constructor(
@@ -60,4 +59,10 @@ export class CarComponent implements OnInit {
       return 'logo.png'
     }
   }
+
+  selectCar(car:Car) {
+    this.currentCar = car
+    this.getCarImage(car)
+  }
+
 }
