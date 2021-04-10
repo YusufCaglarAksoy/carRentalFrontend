@@ -67,7 +67,7 @@ export class CarComponent implements OnInit {
       return car.imagePath
     }
     else{
-      return 'logo.png'
+      return 'Logo.png'
     }
   }
 

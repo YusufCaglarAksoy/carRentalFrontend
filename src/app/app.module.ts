@@ -16,6 +16,10 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FiltersComponent } from './components/filters/filters.component';
+import { AdminBrandComponent } from './components/admin-brand/admin-brand.component';
+import { AdminColorComponent } from './components/admin-color/admin-color.component';
+import { AdminCarComponent } from './components/admin-car/admin-car.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +32,10 @@ import { FiltersComponent } from './components/filters/filters.component';
     CarDetailComponent,
     FilterPipePipe,
     FiltersComponent,
+    AdminBrandComponent,
+    AdminColorComponent,
+    AdminCarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

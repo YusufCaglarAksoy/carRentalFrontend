@@ -1,27 +1,100 @@
-<div class="card text-center">
-    <div class="card-header">Tüm Müşteriler</div>
-    <div class="card-body">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Araba</th>
-                    <th>Şirket Adı</th>
-                    <th>Müşteri Adı</th>
-                    <th>Müşteri Soyadı</th>
-                    <th>Kiralama Tarihi</th>
-                    <th>Kiradan Dönüş Tarihi</th>s
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let rental of rentals">
-                    <td>{{rental.carName}}</td>
-                    <td>{{rental.customerName}}</td>
-                    <td>{{rental.userFirstName}}</td>
-                    <td>{{rental.userLastName}}</td>
-                    <td>{{rental.rentDate}}</td>
-                    <td>{{rental.returnDate}}</td>
-                </tr>
-            </tbody>
-        </table>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>Kiralam Id</th>
+            <th>Araba</th>
+            <th>Şirket Adı</th>
+            <th>Müşteri Adı</th>
+            <th>Müşteri Soyadı</th>
+            <th>Kiralama Tarihi</th>
+            <th>Kiradan Dönüş Tarihi</th>s
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let rental of rentals">
+        <tr >
+            <td>{{rental.rentalId}}</td>
+            <td>{{rental.carName}}</td>
+            <td>{{rental.customerName}}</td>
+            <td>{{rental.userFirstName}}</td>
+            <td>{{rental.userLastName}}</td>
+            <td>{{rental.rentDate}}</td>
+            <td>{{rental.returnDate}}</td>
+            <td>
+            <button type="button"  class="btn btn-danger"  data-bs-toggle="modal" (click)="getRental(rental)" data-bs-target="#Sil"> Sil</button>
+            <button type="button"  class="btn btn-success"  data-bs-toggle="modal" (click)="getRental(rental)" data-bs-target="#Guncelle"> Güncelle</button>
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+
+    <div  class="modal fade" id="Sil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content ">
+              <div class="modal-header">
+                  <h5 class="modal-title">Araba Kiralama</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  Kiralama Silinecek Onaylıyor musunuz ?         
+              </div>
+              <div class="modal-footer">
+                  <button type="button" routerLink="/admin/rentals" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                  <button type="button" routerLink="/admin/rentals" class="btn btn-danger" onclick="location.reload()" (click)="delete()"   data-bs-dismiss="modal"> Sil</button>
+              </div>
+          </div>
+      </div>
     </div>
-</div>
+    
+    <div  class="modal fade" id="Guncelle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title">Araba Kiralama</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="rentalId" class="form-label">Kiralama Id</label>
+              <input type="number" 
+              disabled class="form-control" 
+              id="rentalId" 
+              [value]="rentalId">
+            </div>
+            <div class="mb-3">
+              <label for="carId"  class="form-label">Araba Id</label>
+              <input type="number" 
+              class="form-control" 
+              id="carId" 
+              [(ngModel)]="carId">
+            </div> 
+            <div class="mb-3">
+              <label for="customerId"  class="form-label">Müşteri Id</label>
+              <input type="number" 
+              class="form-control" 
+              id="customerId" 
+              [(ngModel)]="customerId">
+            </div>  
+            <div class="mb-3">
+              <label for="rentDate"  class="form-label">Kirlamma Tarihi</label>
+              <input type="datetime-local" 
+              class="form-control" 
+              id="rentDate" 
+              [(ngModel)]="rentDate">
+            </div>  
+            <div class="mb-3">
+              <label for="returnDate"  class="form-label">Teslim Tarihi</label>
+              <input type="datetime-local" 
+              class="form-control" 
+              id="returnDate" 
+              [(ngModel)]="returnDate">
+            </div>     
+          </div>
+          <div class="modal-footer">
+              <button type="button" routerLink="/admin/rentals" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+              <button type="button"  class="btn btn-success" onclick="location.reload()" (click)="update()"   data-bs-toogle="modal"> Güncelle</button>
+          </div>
+        </div>
+      </div>
+    </div> 

@@ -1,25 +1,26 @@
-  <table class="table table-dark table-hover">
+<table class="table table-dark table-hover">
     <thead>
-      <tr>
-        <th>Id</th>
-        <th>Şirket</th>
-        <th>
-          <button type="button"  class="btn btn-success"  data-bs-toggle="modal"  data-bs-target="#Ekle"> Ekle</button>
-        </th>
-      </tr>
+        <tr>
+          <th scope="col">Renk Id</th>
+          <th scope="col">Renk Adı</th>
+          <th>
+            <button type="button"  class="btn btn-success"  data-bs-toggle="modal"  data-bs-target="#Ekle"> Ekle</button>
+          </th>
+          
+        </tr>
+        
       </thead>
 
-      <tbody>
-        <tr *ngFor="let customer of customers">
-          <td>{{ customer.customerId}}</td>
-          <td>{{ customer.companyName}}</td>
-          <td>
-          <button type="button"  class="btn btn-danger"  data-bs-toggle="modal" (click)="getCustomer(customer)" data-bs-target="#Sil"> Sil</button>
-          <button type="button"  class="btn btn-success"  data-bs-toggle="modal" (click)="getCustomer(customer)" data-bs-target="#Guncelle"> Güncelle</button>
-          </td>
-          
+      <tbody *ngFor="let color of colors">
+        <tr >
+          <th >{{color.colorId}}</th>
+          <td>{{color.colorName}}</td>
+          <td><button type="button"  class="btn btn-danger"  data-bs-toggle="modal" (click)="getColor(color)" data-bs-target="#Sil"> Sil</button>
+            <button type="button"  class="btn btn-success"  data-bs-toggle="modal" (click)="getColor(color)" data-bs-target="#Guncelle"> Güncelle</button></td>
+
       </tr>
   </tbody>
+  
 </table>
 
 <div  class="modal fade" id="Sil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -30,11 +31,11 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              Müşteri Silinecek Onaylıyor musunuz ?         
+              Renk Silinecek Onaylıyor musunuz ?         
           </div>
           <div class="modal-footer">
-              <button type="button" routerLink="/admin/customers" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-              <button type="button" routerLink="/admin/customers" class="btn btn-danger" onclick="location.reload()" (click)="delete()"   data-bs-dismiss="modal"> Sil</button>
+              <button type="button" routerLink="/admin/colors" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+              <button type="button" routerLink="/admin/colors" class="btn btn-danger" onclick="location.reload()" (click)="delete()"   data-bs-dismiss="modal"> Sil</button>
           </div>
       </div>
   </div>
@@ -49,34 +50,27 @@
       </div>
       <div class="modal-body">
           <div class="mb-3">
-              <label for="customerId" class="form-label">Müşteri Id</label>
+              <label for="colorId" class="form-label">Renk Id</label>
               <input type="number" 
               disabled class="form-control" 
-              id="customerId" 
-              [value]="customerId">
+              id="colorId" 
+              [value]="colorId">
             </div>
         <div class="mb-3">
-          <label for="userId"  class="form-label">Kullanıcı Id</label>
-          <input type="number" 
-          class="form-control" 
-          id="userId" 
-          [(ngModel)]="userId">
-        </div>
-        <div class="mb-3">
-          <label for="companyName"  class="form-label">Şirekt Adı</label>
+          <label for="colorName"  class="form-label">Renk Adı</label>
           <input type="text" 
           class="form-control" 
-          id="companyName" 
-          [(ngModel)]="companyName">
+          id="colorName" 
+          [(ngModel)]="colorName">
         </div>      
       </div>
       <div class="modal-footer">
-          <button type="button" routerLink="/admin/customers" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <button type="button" routerLink="/admin/colors" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
           <button type="button"  class="btn btn-success" onclick="location.reload()" (click)="update()"   data-bs-toogle="modal"> Güncelle</button>
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 <div  class="modal fade" id="Ekle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -87,15 +81,15 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label for="brandName"  class="form-label">Marka Adı</label>
+          <label for="colorName"  class="form-label">Renk Adı</label>
           <input type="text" 
           class="form-control" 
-          id="brandName" 
-          [(ngModel)]="brandName">
+          id="colorName" 
+          [(ngModel)]="colorName">
         </div>      
       </div>
       <div class="modal-footer">
-          <button type="button" routerLink="/admin/brands" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <button type="button" routerLink="/admin/colors" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
           <button type="button"  class="btn btn-success" onclick="location.reload()" (click)="add()"   data-bs-toogle="modal"> Ekle</button>
       </div>
     </div>
