@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 
@@ -15,12 +16,16 @@ export class CarComponent implements OnInit {
   carImageBasePath = 'https://localhost:44315/Images/'
   constructor(
     private carService: CarService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params["brandId"]) {
+      if (params['brandId'] && params['colorId']) {
+        this.getCarsBrandAndColor(params['brandId'], params['colorId']);
+      }
+      else if (params["brandId"]) {
         this.getCarsByBrand(params["brandId"]);
       } 
       else if (params["colorId"]) {
@@ -49,6 +54,12 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
     });
   }
+
+  getCarsBrandAndColor(brandId:number, colorId: number) {
+    this.carService.getCarsBrandAndColor(brandId, colorId).subscribe((response) => {
+      this.cars = response.data;
+    });
+  }
   
   getCarImage(car:Car){
 
@@ -64,5 +75,4 @@ export class CarComponent implements OnInit {
     this.currentCar = car
     this.getCarImage(car)
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -9,7 +9,13 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
   brands: Brand[] = [];
+  selectedBrand:Brand;
+  allBrand:Brand;
   currentBrand: Brand;
+  filterText=""
+
+  @Output() brandId = new EventEmitter<string>();
+
   constructor(private brandService: BrandService) {}
 
   ngOnInit(): void {
@@ -22,22 +28,12 @@ export class BrandComponent implements OnInit {
     });
   }
 
-  setCurrentBrand(brand: Brand) {
-    this.currentBrand = brand;
+  setCurrentBrand() {
+    this.brandId.emit(this.selectedBrand?.brandId.toString());
   }
 
-  getCurrentBrandClass(brand: Brand) {
-    if (brand == this.currentBrand) {
-      return "list-group-item list-group-item-action list-group-item-dark";
-    } else {
-      return 'list-group-item';
-    }
+  allBrandSelected(){
+    return this.selectedBrand == undefined ? true : false;
   }
-  getAllBrandClass() {
-    if (!this.currentBrand) {
-      return "list-group-item list-group-item-action list-group-item-dark";
-    } else {
-      return 'list-group-item';
-    }
-  }
+  
 }

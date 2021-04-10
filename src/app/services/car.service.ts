@@ -9,8 +9,8 @@ import { Car } from '../models/car';
 })
 export class CarService {
   apiUrl ='https://localhost:44315/api/'
-  constructor(private httpClient:HttpClient) { }
-
+  constructor(private httpClient:HttpClient) { } 
+  
   getCars(): Observable<ListResponseModel<Car>> {
     let newPath = this.apiUrl + 'cars/GetCarDetailDtos';
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
@@ -24,5 +24,15 @@ export class CarService {
   getCarsByColor(colorId: number): Observable<ListResponseModel<Car>> {
     let newpath = this.apiUrl + 'cars/GetByColorId?colorId=' + colorId;
     return this.httpClient.get<ListResponseModel<Car>>(newpath);
+  }
+
+  getCarById(carId:number): Observable<ListResponseModel<Car>>{
+    let newpath = this.apiUrl +'cars/GetById?Id='+ carId;
+    return this.httpClient.get<ListResponseModel<Car>>(newpath)
+  }
+
+  getCarsBrandAndColor(brandId:number, colorId:number): Observable<ListResponseModel<Car>>{
+    let newpath = this.apiUrl +'cars/GetCarsBrandAndColor?brandId='+brandId+'&colorId='+colorId;
+    return this.httpClient.get<ListResponseModel<Car>>(newpath)
   }
 }

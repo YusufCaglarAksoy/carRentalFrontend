@@ -1,12 +1,20 @@
-<ul class="list-group" style="margin: 5px">
-    <li routerLink="/cars" [class]="getAllColorClass()">TÜM RENKLER</li>
-    <li
-      (click)="setCurrentColor(color)"
-      routerLink="/cars/colors/{{ color.colorId }}"
-      *ngFor="let color of colors"
-      [class]="getCurrentColorClass(color)"
-      
-    >
+<!-- <ul class="list-group" style="margin: 5px">
+  <li routerLink="/cars" [class]="getAllColorClass()">TÜM RENKLER</li>
+  <li
+    (click)="setCurrentColor(color)"
+    routerLink="/cars/colors/{{ color.colorId }}"
+    *ngFor="let color of colors"
+    [class]="getCurrentColorClass(color)"
+    
+  >
+    {{ color.colorName }}
+  </li>
+</ul> -->
+
+
+  <select (change)="setCurrentColor()" [(ngModel)]="selectedColor" class="form-select" >
+    <option [ngValue]="allColor" [selected]="allColorSelected()" class="option">Tüm Renkler</option>
+    <option *ngFor="let color of colors" [ngValue]="color" class="option">
       {{ color.colorName }}
-    </li>
-  </ul>
+    </option>
+  </select>

@@ -1,1 +1,161 @@
-<p>car-detail works!</p>
+<div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: block; padding-right: 15px;" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content"  *ngFor="let car of cars" >
+      <div class="modal-header bg-dark text-light">
+        <h5 class="modal-title h4" id="exampleModalFullscreenLabel">{{car.brandName}} {{car.carName}}</h5>
+        <button routerLink="/cars" type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> 
+
+      </div>
+      <div class="modal-body">
+        <div>    
+          <div style="text-align:center">
+            <img src="{{carImageBasePath}}{{getCarImage(car)}}"  alt="{{car.description}} Image" width="800" height="350">
+          </div>  
+          
+          <ul class="list-group-item-dark list-group-item-action list-group-item-dark">
+            <li class="list-group-item"><b>Model:</b><span style="float: right;"> {{car.carName}}</span></li>
+            <li class="list-group-item"><b>Marka:</b><span style="float: right;"> {{car.brandName}}</span></li>
+            <li class="list-group-item"><b>Renk:</b><span style="float: right;">{{car.colorName}}</span></li>
+            <li class="list-group-item"><b>Model Yılı:</b> <span style="float: right;">{{car.modelYear}}</span></li>
+            <li class="list-group-item"><b>Fiyat:</b><span style="float: right;">{{car.dailyPrice}} </span></li>
+            <li class="list-group-item"><b>Id:</b><span style="float: right;">{{car.carId}} </span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer bg-dark text-light">
+        <button type="button" class="btn btn-primary" (click)="getCarId(car.carId)" data-bs-toggle="modal" data-bs-target="#Kiralama">Rent</button>
+        <button type="button" class="btn btn-secondary" routerLink="/cars" data-bs-toogle="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="Kiralama" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content " *ngFor="let car of cars">
+      <div class="modal-header">
+        <h5 class="modal-title">Araba Kiralama</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+              <div class="mb-3">
+                <label for="dailyprice" class="form-label">Günlük Ücreti</label>
+                <input type="text" 
+                disabled class="form-control" 
+                id="dailyprice" 
+                [value]="car.dailyPrice">
+              </div>
+              <div class="mb-3">
+                <label for="brand" class="form-label">Marka</label>
+                <input type="text" 
+                disabled class="form-control" 
+                id="brand" 
+                [value]="car.brandName">
+              </div> 
+              <div class="mb-3">
+                <label for="carName" class="form-label">Model</label>
+                <input type="text" 
+                disabled class="form-control" 
+                id="carName" 
+                [value]="car.carName">
+              </div>   
+              <div class="mb-3">
+                <label for="name" class="form-label">Renk</label>
+                <input type="text" 
+                disabled class="form-control" 
+                id="name" 
+                [value]="car.colorName">
+              </div>
+              <div class="mb-3">
+                <label for="carId">Araba Id</label>
+                  <div class="form-group">
+                    <input type="text" 
+                    disabled class="form-control" 
+                    id="carId" 
+                    [value]="car.carId">
+                  </div>
+              </div>
+              <div class="mb-3">
+                  <label for="customerId"  class="form-label">Müşteri Id</label>
+                      <input type="number" 
+                      id="customerId" 
+                      class="form-control"
+                      id="customerId"
+                      placeholder="Müşteri ID"
+                      [(ngModel)]="customerId">
+              </div>
+              
+              <div class="mb-3">
+                  <label for="rentDate"  class="form-label">Kiralama Başlangıç</label>
+                  <input type="datetime-local" 
+                  [min]="minDate |date:'yyyy-MM-dd'" 
+                  class="form-control" 
+                  id="rentdate"
+                  (change)="selectMin()" 
+                  [(ngModel)]="rentDate">
+              </div>
+              
+              <div class="mb-3">
+                  <label for="returnDate"  class="form-label">Kiralama Bitiş</label>
+                  <input 
+                  type="date" 
+                  [disabled]="!minSelected"  
+                  [min]="maxDate |date:'yyyy-MM-dd'" 
+                  class="form-control" 
+                  id="returndate" 
+                  [(ngModel)]="returnDate">
+              </div>                    
+      </div>
+      <div class="modal-footer">
+        <button type="button" routerLink="/cars/car/car.carId" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        <button type="button"  class="btn btn-success"  data-bs-toggle="modal" (click)="add()" data-bs-target="#Odeme"   > Kirala</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  class="modal fade" id="Odeme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content " *ngFor="let car of cars">
+      <div class="modal-header">
+        <h5 class="modal-title">Araba Kiralama</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="cardNumber"  class="form-label">Kart Numarası</label>
+          <input type="text" 
+          class="form-control" 
+          id="cardNumber" 
+          [(ngModel)]="cardNumber">
+        </div> 
+        <div class="mb-3">
+        <div class="mb-3">
+          <label for="cardName"  class="form-label">Kart Sahibinin Adı</label>
+          <input type="text" 
+          class="form-control" 
+          id="cardName" 
+          [(ngModel)]="cardName">
+        </div>  
+        <div class="mb-3">
+          <label for="expirationDate"  class="form-label">Kart Son Kullanım Tarihi</label>
+          <input type="text" 
+          class="form-control" 
+          id="expirationDate" 
+          [(ngModel)]="expirationDate">
+        </div>  
+        <div class="mb-3">
+          <label for="CVV"  class="form-label">CVV</label>
+          <input type="number" 
+          class="form-control" 
+          id="CVV" 
+          [(ngModel)]="CVV">
+        </div>          
+      </div>
+      <div class="modal-footer">
+        <button type="button" routerLink="/cars/car/car.carId" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        <button type="button"  class="btn btn-success" (click)="checkCard()"   data-bs-toogle="modal"> Kirala</button>
+      </div>
+    </div>
+  </div>
+</div>
