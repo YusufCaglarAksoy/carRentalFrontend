@@ -1,4 +1,4 @@
-<div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: block; padding-right: 15px;" aria-modal="true" role="dialog">
+<div class="modal fade show" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: block; padding-right: 15px; "  aria-modal="true" role="dialog">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content"  *ngFor="let car of cars" >
       <div class="modal-header bg-dark text-light">
@@ -6,20 +6,46 @@
         <button routerLink="/cars" type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button> 
 
       </div>
-      <div class="modal-body">
-        <div>    
-          <div style="text-align:center">
-            <img src="{{carImageBasePath}}{{getCarImage(car)}}"  alt="{{car.description}} Image" width="800" height="350">
+      <div class="modal-body" style="background-image: url('https://images.ctfassets.net/nwbqij9m1jag/3utS7CPwh2X5J9m3R2edGW/b47a9eaac3c98134ba3235057dda2f7a/hertz-rental-car-ocean-cropped.jpg')" >
+        <div class="d-grid d-md-flex justify-content-center">    
+          <div style="margin-top: 150px;" >
+            <img src="{{carImageBasePath}}{{getCarImage(car)}}"  alt="{{car.description}} Image" width="800" height="400" >
           </div>  
-          
-          <ul class="list-group-item-dark list-group-item-action list-group-item-dark">
-            <li class="list-group-item"><b>Model:</b><span style="float: right;"> {{car.carName}}</span></li>
-            <li class="list-group-item"><b>Marka:</b><span style="float: right;"> {{car.brandName}}</span></li>
-            <li class="list-group-item"><b>Renk:</b><span style="float: right;">{{car.colorName}}</span></li>
-            <li class="list-group-item"><b>Model Yılı:</b> <span style="float: right;">{{car.modelYear}}</span></li>
-            <li class="list-group-item"><b>Fiyat:</b><span style="float: right;">{{car.dailyPrice}} </span></li>
-            <li class="list-group-item"><b>Id:</b><span style="float: right;">{{car.carId}} </span></li>
-          </ul>
+          <div class="card bg-dark" style="width: 20rem; padding: 15px; margin-top: 150px; margin-left: 300px;">
+              <table class="table table-dark">
+                <tbody>
+                  <tr class="table-active table-dark"></tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Model:</td>
+                    <td>{{car.carName}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Marka:</td>
+                    <td>{{car.brandName}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Renk:</td>
+                    <td>{{car.colorName}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Model Yılı:</td>
+                    <td>{{car.modelYear}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Günlük Ücreti:</td>
+                    <td>{{car.dailyPrice}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Id:</td>
+                    <td>{{car.carId}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="table-active">Findeks Puanı:</td>
+                    <td>{{car.FindeksScore}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
         </div>
       </div>
       <div class="modal-footer bg-dark text-light">

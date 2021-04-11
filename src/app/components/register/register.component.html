@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+  
+            <form class="box" [formGroup]="registerForm">
+                <h1>Üye Ol</h1>
+                <input type="email" name="" placeholder="Email" formControlName="email">
+                <input type="firstName" name="" placeholder="Ad" formControlName="firstName">
+                <input type="lastName" name="" placeholder="Soyad" formControlName="lastName">
+                <input type="password" name="" placeholder="Şifre" formControlName="password">
+                <input type="password" name="" placeholder="Tekrar Şifre" formControlName="password">
+  
+                <input type="submit" name="" value="Üye Ol" (click)="register()">
+            </form>
+        </div>
+    </div>
+  </div>

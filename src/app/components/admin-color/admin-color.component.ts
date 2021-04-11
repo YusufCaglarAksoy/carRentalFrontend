@@ -15,7 +15,7 @@ export class AdminColorComponent implements OnInit {
     private toastrService:ToastrService) {}
   colors:Color[]
   colorId:number
-
+  filterText=""
   colorName:string
   ngOnInit(): void {
     this.getColors();

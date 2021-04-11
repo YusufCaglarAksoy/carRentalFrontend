@@ -17,7 +17,7 @@ export class RentalComponent implements OnInit {
   rentDate:Date
   returnDate:Date
 
- 
+  filterText=""
   carName:string;
   customerName:string;
   userFirstName:string;

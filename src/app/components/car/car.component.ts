@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
+import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
+import { CarImageService } from 'src/app/services/carImage.service';
 
 @Component({
   selector: 'app-car',
@@ -13,11 +15,13 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   currentCar:Car;
 
+  carImages:CarImage[]
   carImageBasePath = 'https://localhost:44315/Images/'
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private carImageService:CarImageService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +65,7 @@ export class CarComponent implements OnInit {
     });
   }
   
+
   getCarImage(car:Car){
 
     if(car.imagePath){
@@ -75,4 +80,6 @@ export class CarComponent implements OnInit {
     this.currentCar = car
     this.getCarImage(car)
   }
+
+ 
 }

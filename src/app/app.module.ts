@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {ToastrModule} from "ngx-toastr";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,12 +14,19 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
-import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { FiltersComponent } from './components/filters/filters.component';
 import { AdminBrandComponent } from './components/admin-brand/admin-brand.component';
 import { AdminColorComponent } from './components/admin-color/admin-color.component';
 import { AdminCarComponent } from './components/admin-car/admin-car.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { RegisterComponent } from './components/register/register.component';
+import { FilterBrandPipe } from './pipes/filter-brand.pipe';
+import { FilterColorPipe } from './pipes/filter-color.pipe';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
+import { FilterCustomerPipe } from './pipes/filter-customer.pipe';
+import { FilterRentalPipe } from './pipes/filter-rental.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,12 +37,18 @@ import { LoginComponent } from './components/login/login.component';
     RentalComponent,
     NaviComponent,
     CarDetailComponent,
-    FilterPipePipe,
     FiltersComponent,
     AdminBrandComponent,
     AdminColorComponent,
     AdminCarComponent,
     LoginComponent,
+    HomePageComponent,
+    RegisterComponent,
+    FilterBrandPipe,
+    FilterColorPipe,
+    FilterCarPipe,
+    FilterCustomerPipe,
+    FilterRentalPipe,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +62,9 @@ import { LoginComponent } from './components/login/login.component';
     })
     
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

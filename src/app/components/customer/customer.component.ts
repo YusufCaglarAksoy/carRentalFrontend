@@ -15,7 +15,8 @@ export class CustomerComponent implements OnInit {
   customerId:number
   userId:number
   companyName:string
-
+  FindeksScore:number;
+  filterText=""
   constructor(private customerService: CustomerService,
     private toastrService:ToastrService) {}
 
@@ -34,6 +35,20 @@ export class CustomerComponent implements OnInit {
     this.customerId=customer.customerId
     this.companyName=customer.companyName
     this.userId=customer.userId
+    this.FindeksScore=customer.FindeksScore
+  }
+
+  add(){
+    if(this.companyName== undefined||this.userId==undefined){
+      this.toastrService.error("Eksik bilgi girdiniz. Lütfen alanları kontrol ediniz.");
+      return; 
+    }
+    this.customerService.add({companyName:this.companyName, userId:this.userId, FindeksScore:this.FindeksScore}).subscribe(data=>{
+      this.toastrService.success(data.message)
+
+    },error=>{
+      this.toastrService.error(error.error.message);
+    });
   }
 
   update(){
@@ -42,7 +57,7 @@ export class CustomerComponent implements OnInit {
       return; 
     }
 
-    this.customerService.update({customerId:this.customerId, userId:this.userId, companyName:this.companyName}).subscribe(data=>{
+    this.customerService.update({customerId:this.customerId, userId:this.userId, companyName:this.companyName,FindeksScore:this.FindeksScore}).subscribe(data=>{
       this.toastrService.success(data.message)
     },error=>{
       this.toastrService.error(error.error.message); 
@@ -50,7 +65,7 @@ export class CustomerComponent implements OnInit {
   }
 
   delete(){
-    this.customerService.delete({customerId:this.customerId, userId:this.userId, companyName:this.companyName}).subscribe(data=>{
+    this.customerService.delete({customerId:this.customerId, userId:this.userId, companyName:this.companyName,FindeksScore:this.FindeksScore}).subscribe(data=>{
       this.toastrService.success(data.message)
     },error=>{
       this.toastrService.error(error.error.message)

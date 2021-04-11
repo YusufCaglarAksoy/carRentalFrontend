@@ -13,7 +13,10 @@
 }
 
 .box input[type="email"],
-.box input[type="password"] {
+.box input[type="password"],
+.box input[type="email"],
+.box input[type="lastName"],
+.box input[type="firstName"]{
   border: 0;
   background: none;
   display: block;
@@ -35,7 +38,9 @@
 }
 
 .box input[type="email"]:focus,
-.box input[type="password"]:focus {
+.box input[type="password"]:focus,
+.box input[type="lastName"]:focus,
+.box input[type="firstName"]:focus {
   width: 350px;
   border-color: #98dde9
 }
@@ -54,7 +59,3 @@
   transition: 0.25s;
   cursor: pointer
 }
-
-
-
-

@@ -4,5 +4,5 @@ export interface CarAdd{
     modelYear: number;
     dailyPrice: number;
     description: string;
-
+    FindeksScore:number;
 }

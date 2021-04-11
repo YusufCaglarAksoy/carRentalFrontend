@@ -2,9 +2,8 @@
   <div class="col-md-12">
       <app-filters></app-filters>
   </div>
-    <div *ngFor="let car of cars" class="card bg-dark" style="width: 20rem; padding: 15px; margin:4px;">
+    <div *ngFor="let car of cars" style="width: 20rem; padding: 15px; margin:4px; opacity:0.90;" >
       <img src="{{carImageBasePath}}{{getCarImage(car)}}" class="card-img-top" alt="{{car.description}} Image" width="300" height="200">
-      <div  class="card-body bg-darks">
         <table class="table table-dark">
           <tbody>
             <tr class="table-active table-dark"></tr>
@@ -28,12 +27,15 @@
               <td colspan="2" class="table-active">Fiyat:</td>
               <td>{{car.dailyPrice}}</td>
             </tr>
+            <tr>
+              <td colspan="2" class="table-active"><div class="btn-group" role="group" aria-label="Basic example">
+                <button routerLink="/cars/car/{{car.carId}}" type="button" class="btn btn-light">Detaylar</button>
+              </div>   </td>
+              <td class="table-active"></td>
+            </tr>
           </tbody>
         </table>
-      </div >
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button routerLink="/cars/car/{{car.carId}}" type="button" class="btn btn-light">Detaylar</button>
-      </div>   
+      
   </div>
 </div>
 

@@ -1,4 +1,7 @@
-<table class="table table-dark table-hover">
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz">
+</div>
+<table class="table table-dark table-hover" style="margin-left: 240px;">
     <thead>
         <tr>
           <th scope="col">Renk Id</th>
@@ -11,7 +14,7 @@
         
       </thead>
 
-      <tbody *ngFor="let color of colors">
+      <tbody *ngFor="let color of colors ">
         <tr >
           <th >{{color.colorId}}</th>
           <td>{{color.colorName}}</td>

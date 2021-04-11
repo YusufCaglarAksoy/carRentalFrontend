@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from '../../models/car';
@@ -13,7 +14,7 @@ export class AdminCarComponent implements OnInit {
   constructor(private carService:CarService,
     private toastrService:ToastrService) { }
   cars:Car[]
-
+  filterText=""
   carId: number;
   carName: string;
   brandId: number;
@@ -24,7 +25,7 @@ export class AdminCarComponent implements OnInit {
   dailyPrice: number;
   description: string;
   imagePath:string
-
+  FindeksScore:number
   ngOnInit(): void {
     this.getCars()
   }
@@ -53,7 +54,7 @@ export class AdminCarComponent implements OnInit {
       this.toastrService.error("Eksik bilgi girdiniz. Lütfen alanları kontrol ediniz.");
       return; 
     }
-    this.carService.add({brandId:this.brandId, colorId:this.colorId, modelYear:this.modelYear, dailyPrice:this.dailyPrice, description:this.description}).subscribe(data=>{
+    this.carService.add({brandId:this.brandId, colorId:this.colorId, modelYear:this.modelYear, dailyPrice:this.dailyPrice, description:this.description, FindeksScore:this.FindeksScore}).subscribe(data=>{
       this.toastrService.success(data.message)
 
     },error=>{
@@ -69,7 +70,7 @@ export class AdminCarComponent implements OnInit {
 
     this.carService.update({carId:this.carId, carName:this.carName, brandId:this.brandId, 
                             brandName:this.brandName, colorId:this.colorId, colorName:this.colorName, 
-                            modelYear:this.modelYear,dailyPrice:this.dailyPrice,description:this.description, imagePath:this.imagePath}).subscribe(data=>{
+                            modelYear:this.modelYear,dailyPrice:this.dailyPrice,description:this.description, imagePath:this.imagePath, FindeksScore:this.FindeksScore}).subscribe(data=>{
       this.toastrService.success(data.message)
     },error=>{
       this.toastrService.error(error.error.message); 
@@ -79,7 +80,7 @@ export class AdminCarComponent implements OnInit {
   delete(){
     this.carService.delete({carId:this.carId, carName:this.carName, brandId:this.brandId, 
                             brandName:this.brandName, colorId:this.colorId, colorName:this.colorName, 
-                            modelYear:this.modelYear,dailyPrice:this.dailyPrice,description:this.description, imagePath:this.imagePath}).subscribe(data=>{
+                            modelYear:this.modelYear,dailyPrice:this.dailyPrice,description:this.description, imagePath:this.imagePath,FindeksScore:this.FindeksScore}).subscribe(data=>{
       this.toastrService.success(data.message)
     },error=>{
       this.toastrService.error(error.error.message)

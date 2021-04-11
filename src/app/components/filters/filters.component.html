@@ -2,6 +2,6 @@
 <div class="d-grid gap-2 d-md-flex justify-content-center">
   <app-brand (brandId)="currentBrandId($event)"></app-brand>
   <app-color (colorId)="currentColorId($event)"></app-color>
-  <button class="btn btn-secondary" (click)="clearRoute()" >Temizle</button>
-  <button class="btn btn-primary" (click)="setRoute()" >Filtrele</button>  
+  <button type="submit" class="btn btn-secondary" (click)="clearRoute()" >Temizle</button>
+  <button type="submit" class="btn btn-primary" (click)="setRoute()" >Filtrele</button>  
 </div>

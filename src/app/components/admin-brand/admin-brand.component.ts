@@ -15,6 +15,7 @@ export class AdminBrandComponent implements OnInit {
   brands:Brand[]
   brandId:number
   brandName:string
+  filterText=""
   ngOnInit(): void {
     this.getBrands();
   }
