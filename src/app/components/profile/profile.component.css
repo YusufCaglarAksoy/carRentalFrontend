@@ -1,0 +1,67 @@
+.box {
+    width: 450px;
+    padding: 20px;
+    position: relative;
+    left: 10%;
+    background: #191919;
+    text-align: center;
+    transition: 0.25s;
+  
+    border-radius: 15px;
+
+    opacity: 0.80;
+  }
+  
+  .box input[id="email"],
+  .box input[id="password"],
+  .box input[id="email"],
+  .box input[id="lastName"],
+  .box input[id="firstName"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #727c81;
+    padding: 10px 10px;
+    width: 280px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+  }
+  
+  .box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500
+  }
+  
+  .box input[id="email"]:focus,
+  .box input[id="password"]:focus,
+  .box input[id="lastName"]:focus,
+  .box input[id="firstName"]:focus {
+    width: 350px;
+    text-align: center;
+    border-color: #98dde9
+  }
+  
+  .box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #ffffff;
+    padding: 6px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+  }
+
+  .box label{
+    color: white;
+  }
+  

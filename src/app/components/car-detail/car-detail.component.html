@@ -41,10 +41,15 @@
                   </tr>
                   <tr>
                     <td colspan="2" class="table-active">Findeks Puanı:</td>
-                    <td>{{car.FindeksScore}}</td>
+                    <td>{{car.findeksScore}}</td>
                   </tr>
+                  
                 </tbody>
+                
               </table>
+              <div style="margin-left: 100;">
+                <img src="https://i.resmim.net/1mFTU.png"  width="250" height="40" ></div>
+              
         </div>
         </div>
       </div>
@@ -140,11 +145,11 @@
   </div>
 </div>
 
-<div  class="modal fade" id="Odeme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Odeme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content " *ngFor="let car of cars">
       <div class="modal-header">
-        <h5 class="modal-title">Araba Kiralama</h5>
+        <h5 class="modal-title">Ödeme</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -180,7 +185,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" routerLink="/cars/car/car.carId" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-        <button type="button"  class="btn btn-success" (click)="checkCard()"   data-bs-toogle="modal"> Kirala</button>
+        <button type="button"  class="btn btn-success"    data-bs-toogle="modal" (click)="checkCard()"> Kirala</button>
       </div>
     </div>
   </div>

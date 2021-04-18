@@ -24,21 +24,4 @@ export class UserService {
     return this.httpClient.post<SingleResponseModel<User>>(newPath, email);
   }
 
-  update(user:User):Observable<ResponseModel>{
-    let path = this.apiUrl + "update";
-    return this.httpClient.post<ResponseModel>(path, user);
-  }
-  profileUpdate(user:User):Observable<ResponseModel>{
-    console.log(user)
-    return this.httpClient.post<ResponseModel>(this.apiUrl + 'users/updateprofile', {
-      user:{
-        'id': user.userId,
-        'firstName': user.firstName,
-        'lastName': user.lastName,
-        'email': user.email,
-        'status':user.status
-      },
-      password:user.password
-    });
-  }
 }

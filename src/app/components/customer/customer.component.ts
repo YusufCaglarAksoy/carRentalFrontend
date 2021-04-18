@@ -39,10 +39,12 @@ export class CustomerComponent implements OnInit {
   }
 
   add(){
+    console.log(this.companyName,this.userId,this.FindeksScore)
     if(this.companyName== undefined||this.userId==undefined){
       this.toastrService.error("Eksik bilgi girdiniz. Lütfen alanları kontrol ediniz.");
       return; 
     }
+    
     this.customerService.add({companyName:this.companyName, userId:this.userId, FindeksScore:this.FindeksScore}).subscribe(data=>{
       this.toastrService.success(data.message)
 

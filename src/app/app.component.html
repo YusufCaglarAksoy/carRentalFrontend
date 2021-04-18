@@ -1,11 +1,25 @@
 <body  class="ftco-cover-1 overlay innerpage"
     style="background-image: url('https://images.ctfassets.net/nwbqij9m1jag/3utS7CPwh2X5J9m3R2edGW/b47a9eaac3c98134ba3235057dda2f7a/hertz-rental-car-ocean-cropped.jpg')" >
-    <div>
+    
+    <div class="container">
         <app-navi></app-navi>
-        <div class="container" style="margin-top: 20px; margin-bottom: 45px;" >
-                <router-outlet></router-outlet>
-        </div>
     </div>
+    
+
+
+    <div class="row">
+        <div *ngIf="check()" class="col-md-2">
+            <img src="https://i.hizliresim.com/qcA9Rj.png"  width="200" height="800" style="margin-left: 40px; margin-right: 20px; margin-top: 100px;" >
+            <img src="https://i.hizliresim.com/qcA9Rj.png"  width="200" height="800" style="margin-left: 40px; margin-right: 20px;" >
+        </div>
+        <div class="col-md-8">
+          <router-outlet></router-outlet>
+        </div>
+        <div *ngIf="check()" class="col-md-2">
+            <img src="https://i.hizliresim.com/nVNkeU.png"  width="200" height="800" style="margin-left: 40px; margin-right: 20px; margin-top: 100px;" >
+            <img src="https://i.hizliresim.com/nVNkeU.png"  width="200" height="800" style="margin-left: 40px; margin-right: 20px;" >
+        </div>
+      </div>
     <div style="margin-top: 800px;">
         asd
       </div>

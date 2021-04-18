@@ -7,6 +7,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
 import { LoginModel } from '../models/loginModel';
 import { TokenModel } from '../models/tokenmModel';
 import { UserService } from './user.service';
+import { UserUpdate } from '../models/userUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,19 @@ export class AuthService {
     private userService:UserService,) { }
 
   login(loginModel:LoginModel){
-    this.setCurrentUser(loginModel.email)
+    this.userService.getByEmail(loginModel.email).subscribe(response => {
+      let user = response.data
+      localStorage.setItem('user', JSON.stringify(user));
+    })
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"auth/login",loginModel)
-    
   }
 
   register(loginModel:LoginModel) {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl + "auth/register", loginModel);
+  }
+
+  update(user:UserUpdate) {
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl + "auth/update", user);
   }
   
   isAuthenticated(){
@@ -36,10 +43,4 @@ export class AuthService {
     }
   }
 
-  setCurrentUser(email:string){
-    this.userService.getByEmail(email).subscribe(response => {
-      let user = response.data
-      localStorage.setItem('user', JSON.stringify(user));
-    })
-  }
 }

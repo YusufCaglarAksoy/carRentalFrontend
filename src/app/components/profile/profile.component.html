@@ -1,0 +1,43 @@
+
+<div class="d-grid gap-2 d-md-flex justify-content-center" style="margin-top: 40px;">
+    <img src="https://i.pinimg.com/736x/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg" width="300" height="300" >
+        <div class="box" >
+                <h1>BİLGİLER</h1>
+                <div class="d-grid gap-2 d-md-flex">
+                    <label for="email"  class="form-label" style="margin-top: 30px;">Email:</label>
+                    <input type="text" 
+                    class="form-control" 
+                    id="email" 
+                    [(ngModel)]="email">
+                </div>
+                <div class="d-grid gap-2 d-md-flex">
+                    <label for="firstName"  class="form-label" style="margin-top: 30px; margin-left: 20px;">Ad:</label>
+                    <input type="text" 
+                    class="form-control" 
+                    id="firstName" 
+                    [(ngModel)]="firstName">
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex">
+                    <label for="lastName"  class="form-label" style="margin-top: 30px;">Soyad:</label>
+                    <input type="text" 
+                    class="form-control" 
+                    id="lastName" 
+                    [(ngModel)]="lastName">
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex">
+                    <label for="password"  class="form-label" style="margin-top: 30px; margin-left: 15px;">Şifre:</label>
+                    <input type="password" 
+                    class="form-control" 
+                    id="password"
+                    [(ngModel)]="password">
+                </div>
+                    
+
+                    
+                    
+                    
+                <input type="submit" name="" value="Güncelle" (click)="update()">
+        </div>
+  </div>

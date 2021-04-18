@@ -19,7 +19,6 @@ export class CarDetailComponent implements OnInit {
   
   cars:Car[]=[]
   currentCar:Car;
-  car:Car;
   dataLoaded:boolean = false;
   minDate:Date = new Date();
   carId:number
@@ -90,15 +89,18 @@ export class CarDetailComponent implements OnInit {
     if(this.returnDate == undefined || this.rentDate == undefined || this.customerId==undefined){
       this.toastrService.error("Eksik bilgi girdiniz. Lütfen alanları kontrol ediniz.");
       this.success=false
-      return; 
+      return ; 
     }
 
     this.rentalService.addRental({carId:this.carId,rentDate:new Date(),returnDate:new Date(), customerId:this.customerId}).subscribe(data=>{
+      this.success=true
       this.toastrService.success(data.message)
-      this.success=data.success
+      
+      
     },error=>{
+      this.success=false;  
       this.toastrService.error(error.error.message);
-      this.success=error.success;
+      console.log(this.success)
       
     });
   }
@@ -107,10 +109,8 @@ export class CarDetailComponent implements OnInit {
     console.log(this.cardNumber,this.CVV, this.cardName, this.expirationDate)
     this.paymentService.CheckCard({cardNumber:this.cardNumber, CVV:this.CVV, cardName:this.cardName, expirationDate:this.expirationDate}).subscribe(response=>{
       this.toastrService.success("Ödeme Başarılı",response.message)
-      this.success= response.success
     },responseError=>{
       this.toastrService.error("Ödeme Başarısız",responseError.error.message);
-      this.success= responseError.success
     })
   }
 }

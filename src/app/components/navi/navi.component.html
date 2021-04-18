@@ -21,8 +21,12 @@
               <li><a class="dropdown-item" routerLink="/admin/customers">Müşteriler</a></li>
             </ul>
           </li>
-          <form class="d-flex" style="margin-left: 1200px;">
-            <div *ngIf="!isAuthenticated()" class="text-end" style="margin-left: 10px; margin-right: 10px;">
+          <li *ngIf="!isAuthenticated()"  class="nav-item dropdown">
+            Yönetaaaaaa
+          </li>
+          <img src="https://i.resmim.net/1mFTU.png"  routerLink="/" width="250" height="40" style="margin-left: 186px;" >
+          <form class="d-flex d-grid gap-2 " style="margin-left: 208px;">
+            <div *ngIf="!isAuthenticated()" >
               <button routerLink="/login" type="button" class="btn btn-outline-primary me-2">Giriş Yap</button>
               <button routerLink="/register" type="button" class="btn btn-outline-warning">Üye Ol</button>
             </div>
@@ -32,7 +36,7 @@
                 {{ getCurrentUser().firstName }} {{ getCurrentUser().lastName }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" routerLink="/admin/cars">Profilim</a></li>
+                <li><a class="dropdown-item" routerLink="/profile">Profilim</a></li>
                 <li><a class="dropdown-item"  (click)="logout()">Çıkış Yap</a></li>
               </ul>
             </div>

@@ -8,7 +8,7 @@ export interface Car{
     modelYear: number;
     dailyPrice: number;
     description: string;
-    FindeksScore:number;
+    findeksScore:number;
     imagePath:string;
 
 }

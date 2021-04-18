@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'carRental';
+
+  check(){
+    console.log(window.location.pathname)
+    if(window.location.pathname==="/"||window.location.pathname==="/login"|| window.location.pathname==="/register"){
+      return false;
+    }
+    else{
+      return true
+    }
+  }
 }

@@ -29,6 +29,7 @@ export class NaviComponent implements OnInit {
   logout(){
     this.localStorageService.remove("token")
     this.localStorageService.remove("user")
+    this.router.navigate(["/"])
   }
 
 

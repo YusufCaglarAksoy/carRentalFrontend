@@ -36,12 +36,12 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({},this.loginForm.value)
 
       this.authService.login(loginModel).subscribe(response=>{
-        this.toastrService.info(response.message)
+        this.toastrService.info("Giriş Başarılı")
         localStorage.setItem("token",response.data.token)
         this.router.navigate([""])
       },responseError=>{
         //console.log(responseError)
-        this.toastrService.error(responseError.error.message)
+        this.toastrService.error('Hata','Kullanıcı Adı veya Şifre Geçersiz')
         return responseError.success
       })
     }
